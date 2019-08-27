@@ -7,6 +7,7 @@ output:
     footer: OCRUG August 2019
     font_adjustment: -1
     incremental: true
+    self_contained: true
 ---
 
 # High-Performance Computing: An overview {style="width: 80%;margin: auto;height: 80%;"}
@@ -431,6 +432,14 @@ arma::mat dist_par(const arma::mat & X, int cores = 1) {
 
 # {style="width: 80%;margin: auto;height: 80%;"}
 
+```{r dist-dgp, echo=TRUE, cache=TRUE}
+set.seed(1231)
+K <- 1000
+n <- 500
+x <- matrix(rnorm(n*K), ncol=K)
+```
+
+
 ```{r dist-benchmark, echo=TRUE, cache=TRUE}
 # Benchmarking!
 rbenchmark::benchmark(
@@ -504,7 +513,7 @@ pisim <- function(i, nsim) {  # Notice we don't use the -i-
 # {style="width: 80%;margin: auto;height: 80%;"}
 
 ```{r parallel-ex2, echo=TRUE, cache=TRUE}
-
+library(parallel)
 # Setup
 cl <- makePSOCKcluster(4L)
 clusterSetRNGStream(cl, 123)
