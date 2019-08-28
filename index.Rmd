@@ -268,6 +268,8 @@ $$
 
 # Rcpp: Hello world! vers1 {style="width: 80%;margin: auto;height: 80%;"}
 
+The following C++ file, called `fib.cpp`
+
 ```{Rcpp fib-cpp-program, cache=TRUE}
 #include <Rcpp.h>
 
@@ -283,13 +285,17 @@ int fibCpp(int n) {
 }
 ```
 
-Back in R
+Can be compiled within R using `Rcpp::sourceCpp("fib.cpp")`. This exports the function
+Back into R
 
 ```{r fib-in-r}
 c(fibCpp(1), fibCpp(2), fibCpp(3), fibCpp(4), fibCpp(5))
 ```
 
 # Rcpp: Hello world! vers2 (with function overloading) {style="width: 80%;margin: auto;height: 80%;"}
+
+Rcpp data types are mapped directly to R data types, e.g. vectors of integer in 
+R can be used as `IntegerVector` in Rcpp.
 
 ```{Rcpp fib-cpp-program2, cache=TRUE}
 #include <Rcpp.h>
